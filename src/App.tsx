@@ -117,7 +117,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img 
-              src="https://storage.googleapis.com/aistudio-janus-prod-us-central1/2n60t0z8p142/1.png" 
+              src="/logo.png" 
               alt="Rizi Mboa Logo" 
               className="h-14 w-auto object-contain drop-shadow-sm"
             />
@@ -188,14 +188,57 @@ export default function App() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative hidden lg:block"
             >
-              <div className="relative w-full aspect-square max-w-md mx-auto bg-black rounded-[3rem] p-4 shadow-2xl overflow-hidden border-4 border-white rotate-3 hover:rotate-0 transition-transform duration-500">
+              <div className="relative w-full aspect-square max-w-md mx-auto rotate-3 hover:rotate-0 transition-transform duration-500">
                 <div className="absolute inset-0 bg-brand-pink/20 blur-[100px] rounded-full" />
                 <img 
-                  src="https://storage.googleapis.com/aistudio-janus-prod-us-central1/2n60t0z8p142/1.png" 
+                  src="/logo.png" 
                   alt="Rizi Mboa Logo" 
                   className="relative z-10 w-full h-full object-contain drop-shadow-2xl scale-110"
                 />
               </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Concept Section */}
+      <section className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative order-2 md:order-1"
+            >
+              <div className="relative w-full aspect-[4/5] max-w-sm mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white/80">
+                <img 
+                  src="/hero-woman.jpg" 
+                  alt="La créatrice de Rizi Mboa avec son plat" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1 md:order-2"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-pink/10 text-brand-pink font-bold text-sm mb-6">
+                Le goût qui réunit
+              </div>
+              <h2 className="font-heading text-4xl md:text-5xl font-black mb-6 text-gray-900">
+                RAPIDE ET <span className="text-brand-yellow drop-shadow-sm">FAIT MAISON</span>
+              </h2>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Rizi Mboa, c'est l'histoire d'une passion pour les saveurs authentiques, revisitées pour s'adapter à notre vie trépidante. Nous croyons qu'un bon repas se doit d'être à la fois rapide, copieux, et surtout, préparé avec amour.
+              </p>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Que vous soyez fan de riz savoureux avec notre sauce secrète ou amateur de nos hotdogs signatures, chaque bouchée est une explosion d'intensité. Mangez Rizi Mboa, et vous reviendrez toujours !
+              </p>
             </motion.div>
           </div>
         </div>
@@ -233,15 +276,30 @@ export default function App() {
             <p className="text-gray-600 max-w-2xl mx-auto">Des recettes généreuses, préparées avec amour et nos sauces secrètes.</p>
           </div>
 
-          <div className="space-y-24">
-            {MENU_CATEGORIES.map((category, catIdx) => (
-              <div key={catIdx}>
-                <div className="flex items-center gap-4 mb-10">
-                  <h3 className="font-heading text-2xl md:text-3xl font-bold text-gray-900">{category.title}</h3>
-                  <div className="h-px bg-gray-200/50 flex-1" />
-                </div>
-                
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid lg:grid-cols-12 gap-12">
+            
+            {/* Poster Column */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-4 hidden lg:block"
+            >
+              <div className="sticky top-28 rounded-3xl overflow-hidden shadow-2xl border-[6px] border-white z-10 rotate-1 hover:rotate-0 transition-transform duration-500">
+                <img src="/menu-poster.jpg" alt="Menu Rizi Mboa Stylisé" className="w-full h-auto object-cover" />
+              </div>
+            </motion.div>
+
+            {/* Menu Items Column */}
+            <div className="lg:col-span-8 space-y-20">
+              {MENU_CATEGORIES.map((category, catIdx) => (
+                <div key={catIdx}>
+                  <div className="flex items-center gap-4 mb-10">
+                    <h3 className="font-heading text-2xl md:text-3xl font-bold text-gray-900">{category.title}</h3>
+                    <div className="h-px bg-gray-200/50 flex-1" />
+                  </div>
+                  
+                  <div className="grid sm:grid-cols-2 gap-6">
                   {category.items.map((item, itemIdx) => (
                     <motion.div 
                       key={itemIdx}
@@ -279,6 +337,45 @@ export default function App() {
                 </div>
               </div>
             ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Delivery CTA Section */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-white/50 backdrop-blur-xl rounded-[3rem] p-8 md:p-12 border border-white/80 shadow-2xl grid md:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative aspect-square md:aspect-auto md:h-[400px] w-full rounded-2xl overflow-hidden shadow-lg border border-white/50"
+            >
+              <img src="/delivery-bag.jpg" alt="Sac de livraison Rizi Mboa" className="w-full h-full object-cover object-bottom" />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="font-heading text-3xl md:text-4xl font-black mb-4 text-gray-900 leading-tight">
+                LIVRAISON & <br />
+                <span className="text-brand-pink">À EMPORTER</span>
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Où que vous soyez en Île-de-France, la chaleur et l'intensité du goût arrivent directement chez vous. Un packaging soigné pour que vos plats restent chauds comme à la maison.
+              </p>
+              <a 
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex bg-gray-900 hover:bg-black text-white px-8 py-4 rounded-full font-bold transition-all items-center gap-2 text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1"
+              >
+                Commander maintenant
+                <ChevronRight className="w-5 h-5" />
+              </a>
+            </motion.div>
           </div>
         </div>
       </section>
