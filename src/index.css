@@ -101,6 +101,22 @@ h6,
   @apply bg-brand-pink;
 }
 
+/* Hover Animation for Navbar Links */
+.nav-link {
+  @apply relative py-1 transition-colors duration-300;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-[3px] bg-brand-pink rounded-full transition-transform duration-300 scale-x-0;
+  transform-origin: right;
+}
+
+.nav-link:hover::after {
+  @apply scale-x-100;
+  transform-origin: left;
+}
+
 /* 5. Keyframes & Animations (Framer Motion alternative/fallback) */
 @keyframes blob {
   0% {

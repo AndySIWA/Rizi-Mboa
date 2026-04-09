@@ -33,9 +33,9 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
             RIZI <span className="text-exquisite">MBOA</span>
           </span>
         </div>
-        <div className="hidden md:flex items-center gap-8">
-          <a href="#menu" className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand-pink transition-colors">Menu</a>
-          <a href="#valeurs" className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand-pink transition-colors">Nos Valeurs</a>
+        <div className="hidden md:flex items-center gap-10">
+          <a href="#menu" className="nav-link text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-pink">Menu</a>
+          <a href="#valeurs" className="nav-link text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-pink">Nos Valeurs</a>
           <button
             onClick={onToggleTheme}
             className="p-2 rounded-full hover:bg-black/5 dark:bg-white/5 dark:hover:bg-white/10 transition-colors text-gray-800 dark:text-gray-200"
