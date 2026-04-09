@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -18,7 +18,7 @@ export default function Hero() {
               <span className="text-sm font-medium text-gray-800 dark:text-gray-200">Livraison partout en Île-de-France 🚚💨</span>
             </div>
             <h1 className="font-heading text-5xl lg:text-7xl font-black leading-[1.1] mb-6 text-gray-900 dark:text-white">
-              L'INTENSITÉ <br/>
+              L'INTENSITÉ <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-brand-yellow">
                 DU GOÛT
               </span>
@@ -27,7 +27,7 @@ export default function Hero() {
               Spécialités africaines revisitées. La chaleur du terroir combinée à une efficacité urbaine. Découvrez nos riz savoureux et sandwichs mboa.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a 
+              <a
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -36,7 +36,7 @@ export default function Hero() {
                 <FaWhatsapp size={24} />
                 Commander sur WhatsApp
               </a>
-              <a 
+              <a
                 href="#menu"
                 className="bg-white/50 dark:bg-white/5 backdrop-blur-md hover:bg-white/70 dark:text-white px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2 text-lg border border-white/60 dark:border-white/10 shadow-sm hover:shadow-md"
               >
@@ -45,7 +45,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -53,9 +53,9 @@ export default function Hero() {
           >
             <div className="relative w-full aspect-square max-w-md mx-auto rotate-3 hover:rotate-0 transition-transform duration-500">
               <div className="absolute inset-0 bg-brand-pink/20 blur-[100px] rounded-full" />
-              <img 
-                src="/logo.png" 
-                alt="Rizi Mboa Logo" 
+              <img
+                src="/logo_rizimboa.png"
+                alt="Rizi Mboa Logo"
                 className="relative z-10 w-full h-full object-contain drop-shadow-2xl scale-110"
               />
             </div>

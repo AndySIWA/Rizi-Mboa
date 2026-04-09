@@ -24,13 +24,13 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/40 dark:bg-white/5 backdrop-blur-xl border-b border-white/60 dark:border-white/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img 
-            src="/logo.png" 
-            alt="Rizi Mboa Logo" 
+          <img
+            src="/logo_rizimboa.png"
+            alt="Rizi Mboa Logo"
             className="h-14 w-auto object-contain drop-shadow-sm"
           />
-          <span className="font-heading font-black text-2xl tracking-tighter text-gray-900 dark:text-white hidden sm:block">
-            RIZI <span className="text-brand-pink">MBOA</span>
+          <span className="font-exquisite font-extrabold text-2xl tracking-tighter text-gray-900 dark:text-white hidden sm:block uppercase">
+            RIZI <span className="text-exquisite">MBOA</span>
           </span>
         </div>
         <div className="hidden md:flex items-center gap-8">
@@ -42,7 +42,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
           >
             {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
-          <a 
+          <a
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
