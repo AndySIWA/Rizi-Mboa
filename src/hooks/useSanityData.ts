@@ -140,7 +140,8 @@ export function useSanityData(): UseSanityDataReturn {
 
     fetchAll()
     return () => { cancelled = true }
-  }, [projectId])
+  }, [isSanityConfigured])
+
 
   const globalWhatsappLink = settings
     ? `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(settings.whatsappMessage || "Bonjour Rizi Mboa ! Je souhaite passer une commande.")}`
