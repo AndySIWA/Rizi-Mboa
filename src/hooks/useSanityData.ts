@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { sanityClient } from '../lib/sanityClient'
+import { sanityClient, isSanityConfigured } from '../lib/sanityClient'
 import { menuQuery, settingsQuery, valuesQuery, bannerQuery } from '../lib/queries'
+
 import { MENU_CATEGORIES } from '../data/menu'
 import { SITE_SETTINGS_FALLBACK, WHATSAPP_LINK } from '../data/constants'
 
@@ -89,18 +90,20 @@ export function useSanityData(): UseSanityDataReturn {
   const [error, setError] = useState<string | null>(null)
   const [isFromFallback, setIsFromFallback] = useState(false)
 
-  const projectId = import.meta.env.VITE_SANITY_PROJECT_ID
+  // Le client est-il prêt à l'emploi ?
 
   useEffect(() => {
     // Si Sanity n'est pas encore configuré, on utilise les données statiques
-    if (!projectId) {
-      console.info('[Sanity] Project ID manquant — utilisation des données statiques.')
+    if (!isSanityConfigured) {
+      console.info('[Sanity] Client non configuré — utilisation des données statiques.')
+
       setMenuCategories(MENU_CATEGORIES as unknown as SanityMenuCategory[])
       setSettings(SITE_SETTINGS_FALLBACK)
       setIsFromFallback(true)
       setIsLoading(false)
       return
     }
+
 
     let cancelled = false
 
