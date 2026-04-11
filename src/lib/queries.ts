@@ -53,6 +53,17 @@ export const settingsQuery = `
         hotspot,
         alt
       }
+    },
+    conceptGroup {
+      badge,
+      title,
+      description1,
+      description2,
+      image {
+        asset->,
+        hotspot,
+        alt
+      }
     }
   }
 `

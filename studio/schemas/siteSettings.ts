@@ -98,7 +98,51 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'conceptGroup',
+      title: '🍱 Section Concept',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'badge',
+          title: 'Petit badge',
+          type: 'string',
+          initialValue: 'Le goût qui réunit',
+        }),
+        defineField({
+          name: 'title',
+          title: 'Titre de la section',
+          type: 'string',
+          description: 'Utilisez "|" pour mettre en évidence une partie. Ex: RAPIDE ET | FAIT MAISON',
+          initialValue: 'RAPIDE ET | FAIT MAISON',
+        }),
+        defineField({
+          name: 'description1',
+          title: 'Premier paragraphe',
+          type: 'text',
+          rows: 3,
+          initialValue: 'Rizi Mboa, c\'est l\'histoire d\'une passion pour les saveurs authentiques, revisitées pour s\'adapter à notre vie trépidante. Nous croyons qu\'un bon repas se doit d\'être à la fois rapide, copieux, et surtout, préparé avec amour.',
+        }),
+        defineField({
+          name: 'description2',
+          title: 'Second paragraphe',
+          type: 'text',
+          rows: 3,
+          initialValue: 'Que vous soyez fan de riz savoureux avec notre sauce secrète ou amateur de nos sandwichs Mboa, chaque bouchée est une explosion d\'intensité. Mangez Rizi Mboa, et vous reviendrez toujours !',
+        }),
+        defineField({
+          name: 'image',
+          title: 'Image d\'illustration',
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            defineField({ name: 'alt', type: 'string', title: 'Texte alternatif' })
+          ],
+        }),
+      ],
+    }),
   ],
+
   preview: {
     select: { title: 'siteName' },
     prepare({ title }) {

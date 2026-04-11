@@ -45,6 +45,13 @@ export interface SanitySettings {
     heroSubtitle?: string
     heroImage?: SanityImage
   }
+  conceptGroup?: {
+    badge?: string
+    title?: string
+    description1?: string
+    description2?: string
+    image?: SanityImage
+  }
 }
 
 export interface SanityBannerItem {
