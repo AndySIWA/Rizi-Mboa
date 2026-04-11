@@ -7,7 +7,7 @@ import { Sun, Moon } from 'lucide-react';
  * S'adapte dynamiquement au défilement pour un rendu premium et discret.
  */
 import { FaWhatsapp } from 'react-icons/fa';
-import { WHATSAPP_LINK } from '../../data/constants';
+import { useSanityData } from '../../hooks/useSanityData';
 
 interface NavbarProps {
   isDark: boolean;
@@ -16,6 +16,7 @@ interface NavbarProps {
 
 export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
+  const { globalWhatsappLink } = useSanityData();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +57,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
             {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
           <a
-            href={WHATSAPP_LINK}
+            href={globalWhatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#25D366] hover:bg-[#20BD5A] text-white px-6 py-2.5 rounded-full font-medium transition-all flex items-center gap-2 shadow-sm shadow-[#25D366]/20"

@@ -7,9 +7,18 @@
  */
 import { Phone, MapPin } from 'lucide-react';
 import { FaWhatsapp, FaSnapchatGhost, FaInstagram } from 'react-icons/fa';
-import { WHATSAPP_LINK, WHATSAPP_NUMBER } from '../../data/constants';
+import { WHATSAPP_NUMBER } from '../../data/constants';
+import { useSanityData } from '../../hooks/useSanityData';
 
 export default function Footer() {
+  const { settings, globalWhatsappLink } = useSanityData();
+  const currentNumber = settings?.whatsappNumber ?? WHATSAPP_NUMBER;
+  
+  // Formatage simple pour affichage (ex: +33 7 48 63 41 64)
+  const displayPhone = currentNumber.startsWith('33') 
+    ? `+33 ${currentNumber.substring(2).replace(/(.{2})/g, '$1 ').trim()}` 
+    : `+${currentNumber}`;
+
   return (
     <footer className="bg-white/30 dark:bg-white/5 backdrop-blur-xl pt-20 pb-10 border-t border-white/60 dark:border-white/10 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,13 +36,13 @@ export default function Footer() {
             <h4 className="font-heading font-bold text-lg mb-6 text-gray-900 dark:text-white">Contact</h4>
             <ul className="space-y-4">
               <li>
-                <a href={`tel:+${WHATSAPP_NUMBER}`} className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-pink transition-colors">
+                <a href={`tel:+${currentNumber}`} className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-pink transition-colors">
                   <Phone className="w-5 h-5 text-gray-400" />
-                  <span>07 48 63 41 64</span>
+                  <span>{displayPhone}</span>
                 </a>
               </li>
               <li>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-[#25D366] transition-colors">
+                <a href={globalWhatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-[#25D366] transition-colors">
                   <span className="text-gray-400"><FaWhatsapp size={20} /></span>
                   <span>Commander sur WhatsApp</span>
                 </a>

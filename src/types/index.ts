@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 export interface MenuItem {
   name: string;
   desc: string;
-  price: string;
+  price: string | number;
   img: string;
 }
 

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useSanityData } from '../../hooks/useSanityData';
+import { urlFor } from '../../lib/sanityClient';
 
-const bannerImages = [
+const FALLBACK_BANNER_IMAGES = [
   {
     url: '/banner/restaurant.jpg',
     title: 'Une Expérience Unique',
@@ -22,16 +24,35 @@ const bannerImages = [
 
 export default function Banner() {
   const [index, setIndex] = useState(0);
+  const { bannerItems, isLoading } = useSanityData();
+
+  // On utilise les données de Sanity si disponibles, sinon on prend le fallback
+  const displayItems = bannerItems.length > 0
+    ? bannerItems.map(item => ({
+      url: urlFor(item.image).width(1600).height(900).auto('format').quality(80).url(),
+      title: item.title,
+      subtitle: item.subtitle
+    }))
+    : FALLBACK_BANNER_IMAGES;
 
   useEffect(() => {
+    if (displayItems.length <= 1) return;
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % bannerImages.length);
+      setIndex((prev) => (prev + 1) % displayItems.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [displayItems.length]);
 
-  const next = () => setIndex((prev) => (prev + 1) % bannerImages.length);
-  const prev = () => setIndex((prev) => (prev - 1 + bannerImages.length) % bannerImages.length);
+  const next = () => setIndex((prev) => (prev + 1) % displayItems.length);
+  const prev = () => setIndex((prev) => (prev - 1 + displayItems.length) % displayItems.length);
+
+  if (isLoading && bannerItems.length === 0) {
+    return (
+      <div className="w-full h-[500px] md:h-[600px] bg-black animate-pulse flex items-center justify-center">
+        <div className="text-white/20 font-heading text-2xl">Chargement de la bannière...</div>
+      </div>
+    );
+  }
 
   return (
     <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden bg-black">
@@ -46,8 +67,8 @@ export default function Banner() {
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
           <img
-            src={bannerImages[index].url}
-            alt={bannerImages[index].title}
+            src={displayItems[index].url}
+            alt={displayItems[index].title}
             className="w-full h-full object-cover"
           />
         </motion.div>
@@ -64,21 +85,20 @@ export default function Banner() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
-              <h3 className="font-heading text-brand-pink font-bold tracking-[0.2em] text-sm md:text-base mb-2 uppercase drop-shadow-lg">
-                {bannerImages[index].title}
+              <h3 className="font-heading text-brand-pink font-bold tracking-[0.2em] text-sm md:text-base mb-2 uppercase drop-shadow-2xl">
+                {displayItems[index].title}
               </h3>
-              <h2 className="font-heading text-4xl md:text-7xl font-black text-white leading-tight mb-8 drop-shadow-2xl">
-                {bannerImages[index].subtitle}
+              <h2 className="font-heading text-2xl md:text-4xl font-black text-white leading-tight mb-8 drop-shadow-2xl">
+                {displayItems[index].subtitle}
               </h2>
-              
+
               <div className="flex justify-start gap-3">
-                {bannerImages.map((_, i) => (
+                {displayItems.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setIndex(i)}
-                    className={`h-1.5 transition-all duration-300 rounded-full ${
-                      i === index ? 'w-10 bg-brand-pink' : 'w-3 bg-white/30 hover:bg-white/50'
-                    }`}
+                    className={`h-1.5 transition-all duration-300 rounded-full ${i === index ? 'w-10 bg-brand-pink' : 'w-3 bg-white/30 hover:bg-white/50'
+                      }`}
                   />
                 ))}
               </div>

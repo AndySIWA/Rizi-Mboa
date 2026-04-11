@@ -1,8 +1,9 @@
 import { motion } from 'motion/react';
 import { ChevronRight } from 'lucide-react';
-import { WHATSAPP_LINK } from '../../data/constants';
+import { useSanityData } from '../../hooks/useSanityData';
 
 export default function Delivery() {
+  const { globalWhatsappLink } = useSanityData();
   return (
     <section className="py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -13,7 +14,7 @@ export default function Delivery() {
             viewport={{ once: true }}
             className="relative aspect-square md:aspect-auto md:h-[400px] w-full rounded-2xl overflow-hidden shadow-lg border border-white/50 dark:border-white/10"
           >
-            <img src="/mockup_01.PNG" alt="Sac de livraison Rizi Mboa" className="w-full h-full object-cover" />
+            <img src="/mockup_01.PNG" alt="Sac de livraison Rizi Mboa" className="w-full h-full object-cover" loading="lazy" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -28,7 +29,7 @@ export default function Delivery() {
               Où que vous soyez en Île-de-France, la chaleur et l'intensité du goût arrivent directement chez vous. Un packaging soigné pour que vos plats restent chauds comme à la maison.
             </p>
             <a
-              href={WHATSAPP_LINK}
+              href={globalWhatsappLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex bg-gray-900 hover:bg-black text-white px-8 py-4 rounded-full font-bold transition-all items-center gap-2 text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1"

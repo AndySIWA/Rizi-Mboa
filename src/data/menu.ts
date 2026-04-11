@@ -7,7 +7,7 @@ export const MENU_CATEGORIES: MenuCategory[] = [
       {
         name: "Riz au Porc (sauce secrète)",
         desc: "Riz parfumé accompagné de morceaux de porc tendres, nappé de notre sauce secrète maison.",
-        price: "15€",
+        price: 15,
         img: "/riz_porc.png",
       },
       {
@@ -30,7 +30,7 @@ export const MENU_CATEGORIES: MenuCategory[] = [
       {
         name: "Sandwich Poisson haché",
         desc: "Savoureux, bien épicé et généreusement garni de poisson haché local.",
-        price: "10€",
+        price: 10,
         img: "/pain_poisson.png",
       },
       {
@@ -48,7 +48,7 @@ export const MENU_CATEGORIES: MenuCategory[] = [
       {
         name: "Sandwich Omelette spaghettis",
         desc: "Gourmand et copieux, le combo qui cale bien ! Spécialité légendaire.",
-        price: "8€",
+        price: 8,
         img: "pain_garri.png",
       },
     ],
@@ -59,7 +59,7 @@ export const MENU_CATEGORIES: MenuCategory[] = [
       {
         name: "Bissap Maison (Foléré)",
         desc: "Fait par moi, rafraîchissant et 100% naturel.",
-        price: "5€",
+        price: 5,
         img: "/bissap.png",
       },
       {
