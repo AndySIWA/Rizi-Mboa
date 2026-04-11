@@ -30,14 +30,54 @@ export default function Concept() {
             transition={{ duration: 0.8 }}
             className="relative order-2 md:order-1"
           >
-            <div className="relative w-full aspect-[4/5] max-w-sm mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white/80 dark:border-white/10">
+            {/* Éléments décoratifs en arrière-plan */}
+            <motion.div 
+              animate={{ 
+                scale: [1, 1.1, 1],
+                rotate: [0, 90, 0],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{ 
+                duration: 15, 
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="absolute -top-10 -left-10 w-40 h-40 bg-brand-pink/20 rounded-full blur-3xl"
+            />
+            <motion.div 
+              animate={{ 
+                scale: [1, 1.2, 1],
+                rotate: [0, -90, 0],
+                opacity: [0.2, 0.4, 0.2]
+              }}
+              transition={{ 
+                duration: 12, 
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="absolute -bottom-10 -right-10 w-48 h-48 bg-brand-yellow/20 rounded-full blur-3xl"
+            />
+
+            {/* Cadre de l'image avec animation de flottement */}
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{ 
+                duration: 6, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              whileHover={{ scale: 1.02, rotate: -1 }}
+              className="relative z-10 w-full aspect-[4/5] max-w-sm mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white/80 dark:border-white/10 group"
+            >
               <img 
                 src={imgSrc} 
                 alt={concept?.image?.alt || "La préparation artisanale chez Rizi Mboa"} 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.div>
           </motion.div>
+
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
