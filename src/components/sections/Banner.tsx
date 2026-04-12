@@ -110,15 +110,15 @@ export default function Banner() {
       {/* Navigation arrows */}
       <button
         onClick={prev}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md transition-all text-white/50 hover:text-white group"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 p-2 md:p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md transition-all text-white/50 hover:text-white group"
       >
-        <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-0.5 transition-transform" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md transition-all text-white/50 hover:text-white group"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 p-2 md:p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md transition-all text-white/50 hover:text-white group"
       >
-        <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-0.5 transition-transform" />
       </button>
 
       {/* Seamless transition indicator */}

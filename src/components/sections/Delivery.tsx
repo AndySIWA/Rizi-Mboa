@@ -14,7 +14,7 @@ export default function Delivery() {
             viewport={{ once: true }}
             className="relative aspect-square md:aspect-auto md:h-[400px] w-full rounded-2xl overflow-hidden shadow-lg border border-white/50 dark:border-white/10"
           >
-            <img src="/mockup_01.PNG" alt="Sac de livraison Rizi Mboa" className="w-full h-full object-cover" loading="lazy" />
+            <img src="/Mockup_livraison.jpg" alt="Sac de livraison Rizi Mboa" className="w-full h-full object-cover" loading="lazy" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
